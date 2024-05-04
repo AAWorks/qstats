@@ -1,0 +1,9 @@
+streamlit
+get-all-tickers
+pandas
+numpy
+yfinance
+seaborn
+altair
+stqdm
+pillow
