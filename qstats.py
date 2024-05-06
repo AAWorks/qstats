@@ -11,15 +11,18 @@ st.caption("Visualization App for Tools within QStats")
 
 @st.cache_data
 def pull():
+    with open("data/stock_tickers.txt") as f:
+        stocks = f.read().split("\n")
+
     with open("data/etf_tickers.txt") as f:
         etfs = f.read().split("\n")
     
     with open("data/forex_tickers.txt") as f:
         forex = f.read().split("\n")
     
-    return etfs, forex
+    return stocks, etfs, forex
 
-etf_tickers, forex_tickers = pull()
+stock_tickers, etf_tickers, forex_tickers = pull()
 
 
 
@@ -30,7 +33,7 @@ sectype = cola.radio("Supported Instrument Categories",
 )
 
 cola.info("Equities | NASDAQ, NYSE, AMEX")
-stocks = cola.multiselect("Select", set(gt()), 
+stocks = cola.multiselect("Select", stock_tickers, 
                           default=["AAPL", "MSFT", "GOOGL", "META"], 
                           label_visibility="collapsed", disabled=(sectype != "Equities & ETFs"))
 
