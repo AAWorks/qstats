@@ -11,7 +11,7 @@ st.caption("Visualization App for Tools within QStats")
 
 @st.cache_data
 def pull():
-    with open("data/stock_tickers.txt") as f:
+    with open("data/eqetf_tickers.txt") as f:
         stocks = f.read().split("\n")
 
     with open("data/etf_tickers.txt") as f:
